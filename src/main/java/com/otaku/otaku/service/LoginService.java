@@ -1,6 +1,10 @@
 package com.otaku.otaku.service;
 
 import com.otaku.otaku.common.api.CommonResult;
+import com.otaku.otaku.model.dto.UserDto;
+import com.otaku.otaku.model.entity.User;
+
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * 用户登录相关
@@ -12,5 +16,5 @@ public interface LoginService {
      *账号密码登录
      *
      */
-    CommonResult<String> loginUsePassword(String username, String password);
+    CommonResult<User> loginUsePassword(UserDto userDto, HttpServletResponse httpServletResponse);
 }

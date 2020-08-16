@@ -12,6 +12,7 @@ import java.util.Collections;
  * @Author:daMao
  * @Date: Created in 22:02 2020/8/14
  */
+
 public class JwtUser implements UserDetails {
     private Long id;
     private String username;
@@ -62,4 +63,15 @@ public class JwtUser implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+
+    @Override
+    public String toString() {
+        return "JwtUser{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", authorities=" + authorities +
+                '}';
+    }
+
 }

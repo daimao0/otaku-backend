@@ -1,6 +1,7 @@
 package com.otaku.otaku.controller;
 
 import com.otaku.otaku.common.api.CommonResult;
+import com.otaku.otaku.model.dto.UserDto;
 import com.otaku.otaku.model.entity.User;
 import com.otaku.otaku.service.LoginService;
 import io.swagger.annotations.ApiOperation;
@@ -11,17 +12,19 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletResponse;
+
 @RestController
 public class LoginController {
 
     @Autowired
     private LoginService loginService;
-/*    @PostMapping("/login")
+    @PostMapping("/login")
     @ApiOperation(value = "账号密码登录")
-    public CommonResult<String> loginUsePassword (@ApiParam(value = "传入username,password")
-                                                 @RequestBody User user){
-        return  loginService.loginUsePassword(user.getUsername(),user.getPassword());
-    }*/
+    public CommonResult<User> loginUsePassword (@ApiParam(value = "传入username,password")
+                                                 @RequestBody UserDto userDto, HttpServletResponse httpServletResponse){
+        return  loginService.loginUsePassword(userDto,httpServletResponse);
+    }
 
     @PostMapping("haha")
     public String haha(){

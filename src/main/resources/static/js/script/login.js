@@ -12,23 +12,24 @@ function login() {
     let data = JSON.parse(str);
     $.ajax({
         type: "POST",
-        url: "/auth/login",
+        url: "/login",
         data: JSON.stringify(data),
+        dataType: "json",
+        contentType : "application/json;charset=utf8",
         success: (response) => {
-            window.location.href='/';
+            console.log(response);
             alert("success!")
         },
         error: (result) => {
             console.log(result);
             alert("异常")
+        },
+        complete: xhr => {
+            let token = xhr.getResponseHeader("Authorization");
+            window.localStorage.setItem('Authorization', token);
+            console.log(window.localStorage.getItem('Authorization'))
         }
     });
 
-    $.ajax({
-        type: "HEAD",
-        url: window.location.href,
-        complete: xhr => {
-            console.log(xhr.getAllResponseHeaders())
-        }
-    })
+
 }
